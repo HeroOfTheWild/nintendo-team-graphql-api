@@ -1,0 +1,13 @@
+query {
+   team(teamId: "nintendo01") {
+       nintendoId
+       teamId
+       teamName
+       managerId
+       name {
+           firstName
+           middleName
+           lastName
+       }
+   }
+}

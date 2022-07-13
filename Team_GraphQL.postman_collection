@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "e1f7fdd5-35da-4951-bac3-6782be481250",
+		"name": "Team GraphQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21831080"
+	},
+	"item": [
+		{
+			"name": "Queries",
+			"item": [
+				{
+					"name": "Name Details",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    name(id: \"nin0001\") {\r\n        nintendoId\r\n        firstName\r\n        middleName\r\n        lastName\r\n    }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/{{context-path}}/{{endpoint}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{context-path}}",
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Team by TeamID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n   team(teamId: \"nintendo01\") {\r\n       nintendoId\r\n       teamId\r\n       teamName\r\n       managerId\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n   }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/{{context-path}}/{{endpoint}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{context-path}}",
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teammates by NintendoID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n   teammates(id: \"nin0001\") {\r\n       nintendoId\r\n       teamId\r\n       teamName\r\n       managerId\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n   }\r\n}",
+								"variables": ""
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/{{context-path}}/{{endpoint}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{context-path}}",
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Introspection",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "{\r\n    __schema {\r\n        types {\r\n            name\r\n            fields {\r\n                name\r\n                type {\r\n                    name\r\n                }\r\n            }\r\n        }\r\n        queryType {\r\n            name\r\n            kind\r\n            fields {\r\n                name\r\n            }\r\n        }\r\n    }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "{{domain}}/{{context-path}}/{{endpoint}}",
+					"host": [
+						"{{domain}}"
+					],
+					"path": [
+						"{{context-path}}",
+						"{{endpoint}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "domain",
+			"value": "http://localhost:8081",
+			"type": "string"
+		},
+		{
+			"key": "context-path",
+			"value": "nintendo/team",
+			"type": "string"
+		},
+		{
+			"key": "endpoint",
+			"value": "graphql",
+			"type": "string"
+		}
+	]
+}

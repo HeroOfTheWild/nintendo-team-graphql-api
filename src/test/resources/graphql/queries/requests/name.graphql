@@ -1,0 +1,8 @@
+query {
+    name(id: "nin0001") {
+        nintendoId
+        firstName
+        middleName
+        lastName
+    }
+}

@@ -1,0 +1,14 @@
+type Name {
+    nintendoId: String
+    firstName: String
+    middleName: String
+    lastName: String
+}
+
+type Teammate {
+    nintendoId: String
+    teamId: String
+    teamName: String
+    managerId: String
+    name: Name
+}
