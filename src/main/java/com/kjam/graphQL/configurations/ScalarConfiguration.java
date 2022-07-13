@@ -12,7 +12,6 @@ import graphql.schema.CoercingParseLiteralException;
 import graphql.schema.CoercingParseValueException;
 import graphql.schema.CoercingSerializeException;
 import graphql.language.StringValue;
-import graphql.scalars.ExtendedScalars;
 import graphql.schema.GraphQLScalarType;
 
 @Configuration
@@ -20,11 +19,6 @@ public class ScalarConfiguration {
 
     private final static String NINTENDO_ID_REGEX = "(nin)[0-9]{4}";
     
-    @Bean
-    public GraphQLScalarType dateTime() {
-        return ExtendedScalars.DateTime;
-    }
-
     @Bean
     public GraphQLScalarType nintendoId() {
         return GraphQLScalarType.newScalar()

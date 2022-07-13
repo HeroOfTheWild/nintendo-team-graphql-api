@@ -1,9 +1,7 @@
-scalar DateTime
 scalar NintendoId
 
 type Query {
-    name(id: NintendoId): Name
+    name(id: NintendoId!): Name
     teammates(id: NintendoId!): [Teammate]
     team(teamId: String!): [Teammate]
 }
-

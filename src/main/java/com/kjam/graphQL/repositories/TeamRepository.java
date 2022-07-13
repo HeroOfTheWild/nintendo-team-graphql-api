@@ -9,7 +9,7 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 public interface TeamRepository extends ReactiveCrudRepository<Teammate, String>{
-    @Query("SELECT TEAM_ID, NINTENDO_ID, TEAM_NM, MANAGER_ID FROM NINTENDO.TEAM WHERE TEAM_ID IN (SELECT TEAM_ID FROM NINTENDO.TEAM WHERE NINTENDO_ID = $1)")
+    @Query("SELECT TEAM_ID, NINTENDO_ID, TEAM_NM, MANAGER_ID FROM NINTENDO.TEAM WHERE TEAM_ID IN (SELECT TEAM_ID FROM NINTENDO.TEAM WHERE NINTENDO_ID = $1) AND NINTENDO_ID != $1")
     Flux<Teammate> findTeamByNintendoId(String nintendoId);
 
     @Query("SELECT TEAM_ID, NINTENDO_ID, TEAM_NM, MANAGER_ID FROM NINTENDO.TEAM WHERE TEAM_ID = $1")

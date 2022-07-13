@@ -34,20 +34,26 @@ public class RepositoryTest {
 
     @Test
     public void retrieveTeammatesByNintendoId() {
-        var teamIterable = repository.findTeamByNintendoId("nin0001").toIterable();
+        var nintendoId = "nin0001";
+        var teamIterable = repository.findTeamByNintendoId(nintendoId).toIterable();
         var teammates = StreamSupport.stream(teamIterable.spliterator(), false).collect(Collectors.toList());
-        Assertions.assertEquals(4, teammates.size());
-        teammates.forEach(teammate -> Assertions.assertEquals("nintendo01", teammate.getTeamId()));
+        Assertions.assertEquals(3, teammates.size());
+        teammates.forEach(teammate -> {
+            Assertions.assertEquals("nintendo01", teammate.getTeamId());
+            Assertions.assertNotEquals(nintendoId, teammate.getNintendoId());
+        });
     }
 
     @Test
     public void whenTeammateIsOnMultipleTeams_thenReturnMembersFromBothTeams() {
-        var teamIterable = repository.findTeamByNintendoId("nin9999").toIterable();
+        var nintendoId = "nin9999";
+        var teamIterable = repository.findTeamByNintendoId(nintendoId).toIterable();
         var teammates = StreamSupport.stream(teamIterable.spliterator(), false).collect(Collectors.toList());
-        Assertions.assertEquals(8, teammates.size());
+        Assertions.assertEquals(6, teammates.size());
         teammates.forEach(teammate -> {
             var teamId = teammate.getTeamId();
             Assertions.assertTrue("nintendo01".equalsIgnoreCase(teamId) || "nintendo02".equalsIgnoreCase(teamId));
+            Assertions.assertNotEquals(nintendoId, teammate.getNintendoId());
         });
     }
 
