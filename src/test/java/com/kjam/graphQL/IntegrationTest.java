@@ -3,6 +3,7 @@ package com.kjam.graphQL;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+import org.apache.commons.io.IOUtils;
 import org.json.JSONException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -18,8 +19,6 @@ import org.springframework.test.context.ContextConfiguration;
 import com.graphql.spring.boot.test.GraphQLResponse;
 import com.graphql.spring.boot.test.GraphQLTestTemplate;
 import com.kjam.graphQL.configurations.TestDatabaseConfiguration;
-
-import io.micrometer.core.instrument.util.IOUtils;
 
 @DirtiesContext(classMode = ClassMode.AFTER_CLASS)
 @ContextConfiguration(classes = {TestDatabaseConfiguration.class})
@@ -49,6 +48,14 @@ public class IntegrationTest {
 	@Test
 	void query_name_successfully() throws IOException, JSONException {
 		var fileName = "name";
+		var response = retrieveGraphQLResponse(String.format(GRAPHQL_QUERY_REQUEST_PATH, fileName));
+        var expectedResponse = toJsonResponse(String.format(GRAPHQL_QUERY_RESPONSE_PATH, fileName));
+		verifySuccessfulGraphQLResponse(response, expectedResponse);
+	}
+
+	@Test
+	void query_myTeamInfo_successfully() throws IOException, JSONException {
+		var fileName = "myTeamInfo";
 		var response = retrieveGraphQLResponse(String.format(GRAPHQL_QUERY_REQUEST_PATH, fileName));
         var expectedResponse = toJsonResponse(String.format(GRAPHQL_QUERY_RESPONSE_PATH, fileName));
 		verifySuccessfulGraphQLResponse(response, expectedResponse);

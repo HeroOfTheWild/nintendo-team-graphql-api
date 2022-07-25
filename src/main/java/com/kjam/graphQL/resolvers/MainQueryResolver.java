@@ -15,7 +15,7 @@ import lombok.AllArgsConstructor;
 
 @AllArgsConstructor
 @Component
-public class QueryResolver implements GraphQLQueryResolver {
+public class MainQueryResolver implements GraphQLQueryResolver {
 
     private final NameRepository nameRepository;
     private final TeamRepository teamRepository;
@@ -33,5 +33,10 @@ public class QueryResolver implements GraphQLQueryResolver {
     @Async("ResolverThreadPool")
     public CompletableFuture<Name> name(String id) {
         return nameRepository.findById(id).toFuture();
+    }
+
+    @Async("ResolverThreadPool")
+    public CompletableFuture<Teammate> myTeamInfo(String id) {
+        return teamRepository.findMyTeamInfo(id).toFuture();
     }
 }

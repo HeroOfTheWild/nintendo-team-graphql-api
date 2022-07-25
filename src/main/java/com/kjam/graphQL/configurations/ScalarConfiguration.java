@@ -36,8 +36,8 @@ public class ScalarConfiguration {
 
             @Override
             public @NotNull String parseValue(@NotNull Object input) throws CoercingParseValueException {
-                if(input instanceof String) {
-                    return validateNintendoId((String) input);
+                if(input instanceof String inputString) {
+                    return validateNintendoId(inputString);
                 } else {
                     throw new CoercingParseValueException("Nintendo ID input not valid");
                 }
@@ -45,9 +45,8 @@ public class ScalarConfiguration {
 
             @Override
             public @NotNull String parseLiteral(@NotNull Object input) throws CoercingParseLiteralException {
-                if(input instanceof StringValue) {
-                    var id = (StringValue) input;
-                    return validateNintendoId(id.getValue());
+                if(input instanceof StringValue inputStringValue) {
+                    return validateNintendoId(inputStringValue.getValue());
                 } else {
                     throw new CoercingParseLiteralException("Nintendo ID input not valid");
                 }

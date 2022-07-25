@@ -1,7 +1,15 @@
 scalar NintendoId
 
 type Query {
+    # Retrieve a Name associated to a Nintendo ID
     name(id: NintendoId!): Name
+
+    # Retrieve all Teammates associated to a Nintendo ID
     teammates(id: NintendoId!): [Teammate]
+
+    # Retrieve all Teammates associated to a TeamId
     team(teamId: String!): [Teammate]
+    
+    # Retrieve Team Info associated to a Nintendo ID
+    myTeamInfo(id: NintendoId!): Teammate
 }
