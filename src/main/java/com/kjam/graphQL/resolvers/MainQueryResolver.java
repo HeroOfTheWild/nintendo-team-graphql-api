@@ -1,7 +1,9 @@
 package com.kjam.graphQL.resolvers;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
+import org.springframework.data.domain.Example;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
@@ -21,22 +23,29 @@ public class MainQueryResolver implements GraphQLQueryResolver {
     private final TeamRepository teamRepository;
 
     @Async("ResolverThreadPool")
-    public CompletableFuture<Iterable<Teammate>> team(String teamId) {
-        return CompletableFuture.completedFuture(teamRepository.findTeamByTeamId(teamId).toIterable());
+    public CompletableFuture<Name> name(String nintendoId) {
+        return nameRepository.findById(nintendoId).toFuture();
     }
 
     @Async("ResolverThreadPool")
-    public CompletableFuture<Iterable<Teammate>> teammates(String nintendoId) {
-        return CompletableFuture.completedFuture(teamRepository.findTeamByNintendoId(nintendoId).toIterable());
+    public CompletableFuture<Teammate> primaryTeam(String nintendoId) {
+        var teammateExample = Example.of(Teammate.builder().nintendoId(nintendoId).primary("Y").build());
+        return teamRepository.findOne(teammateExample).toFuture();
     }
 
     @Async("ResolverThreadPool")
-    public CompletableFuture<Name> name(String id) {
-        return nameRepository.findById(id).toFuture();
+    public CompletableFuture<List<Teammate>> team(String teamId) {
+        return teamRepository.findTeamByTeamId(teamId).collectList().toFuture();
     }
 
     @Async("ResolverThreadPool")
-    public CompletableFuture<Teammate> myTeamInfo(String id) {
-        return teamRepository.findMyTeamInfo(id).toFuture();
+    public CompletableFuture<List<Teammate>> teammates(String nintendoId) {
+        return teamRepository.findTeamByNintendoId(nintendoId).collectList().toFuture();
+    }
+
+    @Async("ResolverThreadPool")
+    public CompletableFuture<List<Teammate>> myTeams(String nintendoId) {
+        var teammateExample = Example.of(Teammate.builder().nintendoId(nintendoId).build());
+        return teamRepository.findAll(teammateExample).collectList().toFuture();
     }
 }

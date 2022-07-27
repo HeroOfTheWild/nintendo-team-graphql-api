@@ -1,6 +1,6 @@
 {
     "data": {
-        "myTeamInfo": {
+        "primaryTeam": {
             "nintendoId": "nin0001",
             "teamId": "nintendo01",
             "teamName": "Super Mario",

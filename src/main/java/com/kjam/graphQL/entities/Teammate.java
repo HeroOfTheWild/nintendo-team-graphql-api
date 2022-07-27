@@ -28,4 +28,7 @@ public class Teammate {
 
     @Column("MANAGER_ID")
     private String managerId;
+
+    @Column("PRIMARY_TEAM")
+    private String primary;
 }

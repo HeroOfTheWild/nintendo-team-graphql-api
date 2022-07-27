@@ -54,8 +54,16 @@ public class IntegrationTest {
 	}
 
 	@Test
+	void query_primaryTeam_successfully() throws IOException, JSONException {
+		var fileName = "primaryTeam";
+		var response = retrieveGraphQLResponse(String.format(GRAPHQL_QUERY_REQUEST_PATH, fileName));
+        var expectedResponse = toJsonResponse(String.format(GRAPHQL_QUERY_RESPONSE_PATH, fileName));
+		verifySuccessfulGraphQLResponse(response, expectedResponse);
+	}
+
+	@Test
 	void query_myTeamInfo_successfully() throws IOException, JSONException {
-		var fileName = "myTeamInfo";
+		var fileName = "myTeams";
 		var response = retrieveGraphQLResponse(String.format(GRAPHQL_QUERY_REQUEST_PATH, fileName));
         var expectedResponse = toJsonResponse(String.format(GRAPHQL_QUERY_RESPONSE_PATH, fileName));
 		verifySuccessfulGraphQLResponse(response, expectedResponse);

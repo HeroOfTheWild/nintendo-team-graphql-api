@@ -1,5 +1,5 @@
 query {
-      myTeamInfo(id: "nin0001") {
+      primaryTeam(nintendoId: "nin0001") {
        nintendoId
        teamId
        teamName
