@@ -26,17 +26,19 @@ Checkout the attached Postman Collection for more examples. Below is one for que
 
 ```graphql
 query teamData($nintendoId: NintendoId!){
-    name(id: $nintendoId) {
+    myName(nintendoId: $nintendoId) {
         nintendoId
         firstName
         middleName
         lastName
     }
-       teammates(id: $nintendoId) {
+    myTeammates(nintendoId: $nintendoId) {
        nintendoId
        teamId
-       teamName
-       managerId
+       teamInfo {
+           managerId
+           teamName
+       }
        name {
            firstName
            middleName
