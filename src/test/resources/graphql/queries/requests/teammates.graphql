@@ -1,7 +1,11 @@
 query {
-   teammates(nintendoId: "nin0001") {
+   teammates(teamId: "nintendo01") {
        nintendoId
        teamId
+       teamInfo {
+           managerId
+           teamName
+       }
        name {
            firstName
            middleName

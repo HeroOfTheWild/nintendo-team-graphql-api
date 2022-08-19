@@ -55,8 +55,8 @@ public class IntegrationTest {
     }
 
 	@Test
-	void query_name_successfully() throws IOException, JSONException {
-		var fileName = "name";
+	void query_myName_successfully() throws IOException, JSONException {
+		var fileName = "myName";
 		verifyGraphQLResponse(fileName, fileName);
 	}
 
@@ -66,6 +66,12 @@ public class IntegrationTest {
 		var variables = new ObjectNode(JsonNodeFactory.instance);
 		variables.put("nintendoId", "nin0001");
 		verifyGraphQLResponse(fileName, fileName, variables);
+	}
+
+	@Test
+	void query_myTeammates_successfully() throws IOException, JSONException {
+		var fileName = "myTeammates";
+		verifyGraphQLResponse(fileName, fileName);
 	}
 
 	@Test
@@ -82,13 +88,7 @@ public class IntegrationTest {
 		verifyGraphQLResponse(fileName, fileName);
 	}
 
-    @Test
-	void query_team_successfully() throws IOException, JSONException {
-		var fileName = "team";
-		verifyGraphQLResponse(fileName, fileName);
-	}
-
-    @Test
+	@Test
 	void query_teammates_successfully() throws IOException, JSONException {
 		var fileName = "teammates";
 		verifyGraphQLResponse(fileName, fileName);

@@ -1,5 +1,5 @@
 query {
-    name(nintendoId: "nin0001") {
+    myName(nintendoId: "nin0001") {
         nintendoId
         firstName
         middleName

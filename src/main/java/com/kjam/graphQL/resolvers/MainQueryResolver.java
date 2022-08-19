@@ -28,7 +28,7 @@ public class MainQueryResolver implements GraphQLQueryResolver {
     private final TeammateRepository teammateRepository;
 
     @Async("ResolverThreadPool")
-    public CompletableFuture<Name> name(String nintendoId) {
+    public CompletableFuture<Name> myName(String nintendoId) {
         return nameRepository.findById(nintendoId).toFuture();
     }
 
@@ -39,13 +39,8 @@ public class MainQueryResolver implements GraphQLQueryResolver {
     }
 
     @Async("ResolverThreadPool")
-    public CompletableFuture<List<Teammate>> teammates(String nintendoId) {
+    public CompletableFuture<List<Teammate>> myTeammates(String nintendoId) {
         return teammateRepository.findTeamByNintendoId(nintendoId).collectList().toFuture();
-    }
-
-    @Async("ResolverThreadPool")
-    public CompletableFuture<List<Teammate>> team(String teamId) {
-        return teammateRepository.findTeamByTeamId(teamId).collectList().toFuture();
     }
 
     @Async("ResolverThreadPool") 
@@ -62,5 +57,10 @@ public class MainQueryResolver implements GraphQLQueryResolver {
         var future = teammateRepository.findAll(Example.of(Teammate.builder().nintendoId(nintendoId).build())).collectList().toFuture();
         var teamIds = future.get().stream().map(x -> x.getTeamId()).collect(Collectors.toList());
         return teamRepository.findAllById(teamIds).collectList().toFuture();
+    }
+
+    @Async("ResolverThreadPool")
+    public CompletableFuture<List<Teammate>> teammates(String teamId) {
+        return teammateRepository.findTeamByTeamId(teamId).collectList().toFuture();
     }
 }
