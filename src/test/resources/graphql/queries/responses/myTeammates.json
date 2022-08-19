@@ -1,22 +1,9 @@
 {
     "data": {
-        "team": [
-            {
-                "nintendoId": "nin0001",
-                "teamId": "nintendo01",
-                "teamName": "Super Mario",
-                "managerId": "nin9999",
-                "name": {
-                    "firstName": "Mario",
-                    "middleName": "Jumpman",
-                    "lastName": "Nintendo"
-                }
-            },
+        "myTeammates": [
             {
                 "nintendoId": "nin0002",
                 "teamId": "nintendo01",
-                "teamName": "Super Mario",
-                "managerId": "nin9999",
                 "name": {
                     "firstName": "Luigi",
                     "middleName": "Hypeman",
@@ -26,8 +13,6 @@
             {
                 "nintendoId": "nin0003",
                 "teamId": "nintendo01",
-                "teamName": "Super Mario",
-                "managerId": "nin9999",
                 "name": {
                     "firstName": "Peach",
                     "middleName": null,
@@ -37,8 +22,6 @@
             {
                 "nintendoId": "nin9999",
                 "teamId": "nintendo01",
-                "teamName": "Super Mario",
-                "managerId": "nin9999",
                 "name": {
                     "firstName": "Shigeru",
                     "middleName": null,

@@ -13,16 +13,16 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table("NINTENDO.TEAMMATE")
-public class Teammate {
-
+@Table("NINTENDO.TEAM")
+public class Team {
+    
     @Id
     @Column("TEAM_ID")
     private String teamId;
 
-    @Column("NINTENDO_ID")    
-    private String nintendoId;
+    @Column("TEAM_NM")
+    private String teamName;
 
-    @Column("PRIMARY_TEAM")
-    private String primary;
+    @Column("MANAGER_ID")
+    private String managerId;
 }

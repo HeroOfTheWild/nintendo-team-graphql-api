@@ -1,0 +1,7 @@
+query {
+      myTeams(nintendoId: "nin9999") {
+       teamId
+       teamName
+       managerId
+   }
+}
