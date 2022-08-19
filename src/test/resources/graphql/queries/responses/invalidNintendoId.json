@@ -1,0 +1,11 @@
+{
+    "errors": [
+        {
+            "message": "INVALID ID",
+            "extensions": {
+                "classification": "ValidationError"
+            }
+        }
+    ],
+    "data": null
+}

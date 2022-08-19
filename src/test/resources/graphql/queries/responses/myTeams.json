@@ -2,13 +2,11 @@
     "data": {
         "myTeams": [
             {
-                "nintendoId": "nin9999",
                 "teamId": "nintendo01",
                 "teamName": "Super Mario",
                 "managerId": "nin9999"
             },
             {
-                "nintendoId": "nin9999",
                 "teamId": "nintendo02",
                 "teamName": "Wonkinator",
                 "managerId": "nin9999"

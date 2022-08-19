@@ -1,8 +1,0 @@
-query {
-      primaryTeam(nintendoId: "nin0001") {
-       nintendoId
-       teamId
-       teamName
-       managerId
-   }
-}

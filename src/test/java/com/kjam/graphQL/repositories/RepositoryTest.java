@@ -19,7 +19,7 @@ import com.kjam.graphQL.configurations.TestDatabaseConfiguration;
 public class RepositoryTest {
 
     @Autowired
-    TeamRepository repository;
+    TeammateRepository repository;
 
     @Autowired
     NameRepository nameRepo;

@@ -1,0 +1,13 @@
+{
+    "data": {
+        "myNintendoAccount": {
+            "nintendoId": "nin0001",
+            "teamId": "nintendo01",
+            "teamInfo": {
+                "teamId": "nintendo01",
+                "teamName": "Super Mario",
+                "managerId": "nin9999"
+            }
+        }
+    }
+}

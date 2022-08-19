@@ -1,3 +1,10 @@
+type Teammate {
+    nintendoId: String!
+    teamId: String!
+    name: Name
+    teamInfo: Team
+}
+
 type Name {
     nintendoId: String!
     firstName: String
@@ -5,10 +12,8 @@ type Name {
     lastName: String
 }
 
-type Teammate {
-    nintendoId: String!
+type Team {
     teamId: String!
     teamName: String
     managerId: String
-    name: Name
 }

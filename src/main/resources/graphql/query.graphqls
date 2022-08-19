@@ -5,8 +5,8 @@ type Query {
     # Retrieve a Name associated to a Nintendo ID
     name(nintendoId: NintendoId!): Name
 
-    # Retrieve Primary Team Info associated to a Nintendo ID
-    primaryTeam(nintendoId: NintendoId!): Teammate
+    # Retrieve Primary Team info associated to a Nintendo ID
+    myNintendoAccount(nintendoId: NintendoId!): Teammate
 
     # Retrieve all Teammates associated to a Nintendo ID
     teammates(nintendoId: NintendoId!): [Teammate]
@@ -14,6 +14,9 @@ type Query {
     # Retrieve all Teammates associated to a TeamId
     team(teamId: NintendoTeamId!): [Teammate]
 
+    # Retrieves the Primary Team info associated to the Nintendo ID
+    myPrimaryTeam(nintendoId: NintendoId!): Team
+
     # Retrieve Team Infos associated to a Nintendo ID
-    myTeams(nintendoId: NintendoId!): [Teammate]
+    myTeams(nintendoId: NintendoId!): [Team]
 }

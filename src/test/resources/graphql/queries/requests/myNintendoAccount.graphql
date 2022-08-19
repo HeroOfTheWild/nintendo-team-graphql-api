@@ -1,0 +1,11 @@
+query ($nintendoId: NintendoId!){
+      myNintendoAccount(nintendoId: $nintendoId) {
+       nintendoId
+       teamId
+       teamInfo {
+           teamId
+           teamName
+           managerId
+       }
+   }
+}

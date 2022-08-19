@@ -2,8 +2,6 @@ query {
    teammates(nintendoId: "nin0001") {
        nintendoId
        teamId
-       teamName
-       managerId
        name {
            firstName
            middleName

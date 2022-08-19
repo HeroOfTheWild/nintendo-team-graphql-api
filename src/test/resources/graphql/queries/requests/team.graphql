@@ -2,8 +2,10 @@ query {
    team(teamId: "nintendo01") {
        nintendoId
        teamId
-       teamName
-       managerId
+       teamInfo {
+           managerId
+           teamName
+       }
        name {
            firstName
            middleName
