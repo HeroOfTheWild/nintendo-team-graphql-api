@@ -17,7 +17,7 @@
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query teamData($nintendoId: NintendoId!){\r\n    name(nintendoId: $nintendoId) {\r\n        nintendoId\r\n        firstName\r\n        middleName\r\n        lastName\r\n    }\r\n    teammates(nintendoId: $nintendoId) {\r\n       nintendoId\r\n       teamId\r\n       teamName\r\n       managerId\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n   }\r\n}",
+								"query": "query teamData($nintendoId: NintendoId!){\r\n    myName(nintendoId: $nintendoId) {\r\n        nintendoId\r\n        firstName\r\n        middleName\r\n        lastName\r\n    }\r\n    myTeammates(nintendoId: $nintendoId) {\r\n       nintendoId\r\n       teamId\r\n       teamInfo {\r\n           managerId\r\n           teamName\r\n       }\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n   }\r\n}",
 								"variables": "{\r\n    \"nintendoId\": \"nin0001\"\r\n}"
 							}
 						},
@@ -35,14 +35,39 @@
 					"response": []
 				},
 				{
-					"name": "Name Details",
+					"name": "My Nintendo Account",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n    name(nintendoId: \"nin0001\") {\r\n        nintendoId\r\n        firstName\r\n        middleName\r\n        lastName\r\n    }\r\n}",
+								"query": "query nintendoAccount($nintendoId: NintendoId!){\r\n   myNintendoAccount(nintendoId: $nintendoId) {\r\n       nintendoId\r\n       teamId\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n       teamInfo {\r\n           teamName\r\n           teamName\r\n           managerId\r\n       }\r\n   }\r\n}",
+								"variables": "{\r\n    \"nintendoId\": \"nin0001\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/{{context-path}}/{{endpoint}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{context-path}}",
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Name by NintendoID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n    myName(nintendoId: \"nin0001\") {\r\n        nintendoId\r\n        firstName\r\n        middleName\r\n        lastName\r\n    }\r\n}",
 								"variables": ""
 							}
 						},
@@ -60,14 +85,14 @@
 					"response": []
 				},
 				{
-					"name": "Team by TeamID",
+					"name": "My Teammates by NintendoID",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n   team(teamId: \"nintendo01\") {\r\n       nintendoId\r\n       teamId\r\n       teamName\r\n       managerId\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n   }\r\n}",
+								"query": "query {\r\n   myTeammates(nintendoId: \"nin0004\") {\r\n       nintendoId\r\n       teamId\r\n       teamInfo {\r\n           teamName\r\n           managerId\r\n       }\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n   }\r\n}",
 								"variables": ""
 							}
 						},
@@ -85,14 +110,39 @@
 					"response": []
 				},
 				{
-					"name": "Teammates by NintendoID",
+					"name": "My Primary Team by NintendoID",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n   teammates(nintendoId: \"nin0001\") {\r\n       nintendoId\r\n       teamId\r\n       teamName\r\n       managerId\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n   }\r\n}",
+								"query": "query primary($nintendoId: NintendoId!) {\r\n    myPrimaryTeam(nintendoId: $nintendoId) {\r\n        teamName\r\n        teamId\r\n        managerId\r\n    }\r\n}",
+								"variables": "{\r\n    \"nintendoId\" : \"nin9999\"\r\n}"
+							}
+						},
+						"url": {
+							"raw": "{{domain}}/{{context-path}}/{{endpoint}}",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"{{context-path}}",
+								"{{endpoint}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "My Teams By NintendoID",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "graphql",
+							"graphql": {
+								"query": "query {\r\n      myTeams(nintendoId: \"nin9999\") {\r\n       teamId\r\n       teamName\r\n       managerId\r\n   }\r\n}",
 								"variables": ""
 							}
 						},
@@ -110,14 +160,14 @@
 					"response": []
 				},
 				{
-					"name": "Primary Team Info by NintendoID",
+					"name": "Teammates by TeamID",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n      primaryTeam(nintendoId: \"nin0001\") {\r\n       nintendoId\r\n       teamId\r\n       teamName\r\n       managerId\r\n   }\r\n}",
+								"query": "query {\r\n   teammates(teamId: \"nintendo01\") {\r\n       nintendoId\r\n       teamId\r\n       teamInfo {\r\n           managerId\r\n           teamName\r\n       }\r\n       name {\r\n           firstName\r\n           middleName\r\n           lastName\r\n       }\r\n   }\r\n}",
 								"variables": ""
 							}
 						},
@@ -133,16 +183,21 @@
 						}
 					},
 					"response": []
-				},
+				}
+			]
+		},
+		{
+			"name": "Mutations",
+			"item": [
 				{
-					"name": "My Team Info by NintendoID",
+					"name": "New Teammate",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "graphql",
 							"graphql": {
-								"query": "query {\r\n      myTeams(nintendoId: \"nin9999\") {\r\n       nintendoId\r\n       teamId\r\n       teamName\r\n       managerId\r\n   }\r\n}",
+								"query": "mutation {\r\n    newTeammate(newTeammate: {\r\n        teamId: \"nintendo01\"\r\n        name: {\r\n            firstName: \"Rosalina\"\r\n            middleName: null\r\n            lastName: \"Galaxy\"\r\n        }\r\n    }) {\r\n        teamId\r\n    }\r\n}",
 								"variables": ""
 							}
 						},
