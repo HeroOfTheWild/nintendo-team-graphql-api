@@ -1,7 +1,5 @@
 package com.kjam.graphQL.entities;
 
-import java.sql.Timestamp;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
@@ -30,8 +28,4 @@ public class Name {
 
     @Column("LAST_NM")
     private String lastName;
-
-    @Column("MODIFIED")
-    private Timestamp modified;
-    
 }

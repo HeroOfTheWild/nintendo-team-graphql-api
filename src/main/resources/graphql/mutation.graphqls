@@ -1,0 +1,20 @@
+type Mutation {
+    newTeammate(newTeammate: TeammateInput!): Teammate
+    newTeam(newTeam: TeamInput!): NintendoTeamId
+}
+
+input TeammateInput {
+    teamId: NintendoTeamId!
+    name: NameInput!
+}
+
+input NameInput {
+    firstName: String
+    middleName: String
+    lastName: String!
+}
+
+input TeamInput {
+    teamName: String!
+    managerId: NintendoId!
+}
