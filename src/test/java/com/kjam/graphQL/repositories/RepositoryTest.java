@@ -49,10 +49,10 @@ public class RepositoryTest {
         var nintendoId = "nin9999";
         var teamIterable = repository.findTeamByNintendoId(nintendoId).toIterable();
         var teammates = StreamSupport.stream(teamIterable.spliterator(), false).collect(Collectors.toList());
-        Assertions.assertEquals(6, teammates.size());
+        Assertions.assertEquals(11, teammates.size());
         teammates.forEach(teammate -> {
             var teamId = teammate.getTeamId();
-            Assertions.assertTrue("nintendo01".equalsIgnoreCase(teamId) || "nintendo02".equalsIgnoreCase(teamId));
+            Assertions.assertTrue("nintendo01".equalsIgnoreCase(teamId) || "nintendo02".equalsIgnoreCase(teamId) || "nintendo03".equalsIgnoreCase(teamId));
             Assertions.assertNotEquals(nintendoId, teammate.getNintendoId());
         });
     }

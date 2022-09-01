@@ -38,7 +38,7 @@ public class ScalarConfiguration {
             @Override
             public @NotNull String parseValue(@NotNull Object input) throws CoercingParseValueException {
                 if(input instanceof String inputString) {
-                    return validateId(inputString, NINTENDO_ID_REGEX);
+                    return validateId(inputString, NINTENDO_ID_REGEX, "Nintendo Id");
                 } else {
                     throw new CoercingParseValueException("Nintendo ID input not valid");
                 }
@@ -47,7 +47,7 @@ public class ScalarConfiguration {
             @Override
             public @NotNull String parseLiteral(@NotNull Object input) throws CoercingParseLiteralException {
                 if(input instanceof StringValue inputStringValue) {
-                    return validateId(inputStringValue.getValue(), NINTENDO_ID_REGEX);
+                    return validateId(inputStringValue.getValue(), NINTENDO_ID_REGEX, "Nintendo Id");
                 } else {
                     throw new CoercingParseLiteralException("Nintendo ID input not valid");
                 }
@@ -75,7 +75,7 @@ public class ScalarConfiguration {
             @Override
             public @NotNull String parseValue(@NotNull Object input) throws CoercingParseValueException {
                 if(input instanceof String inputString) {
-                    return validateId(inputString, NINTENDO_TEAM_REGEX);
+                    return validateId(inputString, NINTENDO_TEAM_REGEX, "Nintendo Team Id");
                 } else {
                     throw new CoercingParseValueException("Nintendo Team ID input not valid");
                 }
@@ -84,7 +84,7 @@ public class ScalarConfiguration {
             @Override
             public @NotNull String parseLiteral(@NotNull Object input) throws CoercingParseLiteralException {
                 if(input instanceof StringValue inputStringValue) {
-                    return validateId(inputStringValue.getValue(), NINTENDO_TEAM_REGEX);
+                    return validateId(inputStringValue.getValue(), NINTENDO_TEAM_REGEX, "Nintendo Team Id");
                 } else {
                     throw new CoercingParseLiteralException("Nintendo Team ID input not valid");
                 }
@@ -95,11 +95,11 @@ public class ScalarConfiguration {
     }
 
 
-    protected static String validateId(final String input, final String regex) {
+    protected static String validateId(final String input, final String regex, final String name) {
         if(input.matches(regex)) {
             return input;
         } else {
-            throw new CoercingParseLiteralException("INVALID ID");
+            throw new CoercingParseLiteralException(String.format("Invalid %s", name));
         }
     }
 }

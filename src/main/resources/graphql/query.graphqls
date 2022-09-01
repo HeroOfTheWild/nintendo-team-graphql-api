@@ -22,4 +22,7 @@ type Query {
     
     # Retrieve all Teammates associated to a TeamId
     teammates(teamId: NintendoTeamId!): [Teammate]
+
+    # Retrieves all available Teams
+    teams: [Team]
 }

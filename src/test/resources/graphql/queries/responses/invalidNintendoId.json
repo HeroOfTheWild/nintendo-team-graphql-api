@@ -1,7 +1,7 @@
 {
     "errors": [
         {
-            "message": "INVALID ID",
+            "message": "Invalid Nintendo Id",
             "extensions": {
                 "classification": "ValidationError"
             }

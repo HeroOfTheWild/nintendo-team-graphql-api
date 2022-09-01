@@ -1,7 +1,7 @@
-query primary($nintendoId: NintendoId!){
-   myPrimaryTeam(nintendoId: $nintendoId) {
-       managerId
-       teamName
-       teamId
-   }
+query primary($nintendoId: NintendoId!) {
+    myPrimaryTeam(nintendoId: $nintendoId) {
+        teamName
+        teamId
+        managerId
+    }
 }

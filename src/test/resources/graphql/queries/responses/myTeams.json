@@ -9,7 +9,12 @@
             {
                 "teamId": "nintendo02",
                 "teamName": "Wonkinator",
-                "managerId": "nin9999"
+                "managerId": "nin0010"
+            },
+            {
+                "teamId": "nintendo03",
+                "teamName": "Super Research Experts",
+                "managerId": "nin0011"
             }
         ]
     }

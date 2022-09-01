@@ -68,4 +68,9 @@ public class MainQueryResolver implements GraphQLQueryResolver {
     public CompletableFuture<List<Teammate>> teammates(String teamId) {
         return teammateRepository.findTeamByTeamId(teamId).collectList().toFuture();
     }
+
+    @Async("ResolverThreadPool")
+    public CompletableFuture<List<Team>> teams() {
+        return teamRepository.findAll().collectList().toFuture();
+    }
 }
